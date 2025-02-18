@@ -10,5 +10,23 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
+  server:
+    build:
+      context: .
+      dockerfile: packages/server/Dockerfile
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://postgres:dev@db:5432/consult_track
+
+  web:
+    build:
+      context: .
+      dockerfile: packages/web/Dockerfile
+    ports:
+      - "3000:3000"
+
 volumes:
   pgdata:
