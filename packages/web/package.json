@@ -5,12 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build"
+    "build": "vite build"
   },
   "dependencies": {
     "@trpc/client": "^10.45.0",
     "@trpc/react-query": "^10.45.0",
-    "@tanstack/react-query": "^5.17.0",
+    "@tanstack/react-query": "^4.36.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.0"

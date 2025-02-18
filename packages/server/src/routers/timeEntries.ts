@@ -22,7 +22,13 @@ export const timeEntryRouter = router({
     }))
     .mutation(({ ctx, input }) => {
       return ctx.prisma.timeEntry.create({
-        data: { ...input, userId: ctx.userId },
+        data: {
+          date: input.date,
+          hours: input.hours,
+          note: input.note,
+          project: { connect: { id: input.projectId } },
+          user: { connect: { id: ctx.userId } },
+        },
       });
     }),
 

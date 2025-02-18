@@ -13,7 +13,11 @@ export const clientRouter = router({
     .input(z.object({ name: z.string(), email: z.string().email().optional() }))
     .mutation(({ ctx, input }) => {
       return ctx.prisma.client.create({
-        data: { ...input, userId: ctx.userId },
+        data: {
+          name: input.name,
+          email: input.email,
+          user: { connect: { id: ctx.userId } },
+        },
       });
     }),
 });

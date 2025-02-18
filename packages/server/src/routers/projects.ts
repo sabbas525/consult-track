@@ -13,7 +13,12 @@ export const projectRouter = router({
     .input(z.object({ name: z.string(), hourlyRate: z.number(), clientId: z.string() }))
     .mutation(({ ctx, input }) => {
       return ctx.prisma.project.create({
-        data: { ...input, userId: ctx.userId },
+        data: {
+          name: input.name,
+          hourlyRate: input.hourlyRate,
+          client: { connect: { id: input.clientId } },
+          user: { connect: { id: ctx.userId } },
+        },
       });
     }),
 });

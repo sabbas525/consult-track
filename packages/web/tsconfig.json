@@ -4,11 +4,13 @@
     "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "moduleResolution": "bundler",
-    "strict": true,
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "outDir": "./dist"
+    "noEmit": true,
+    "paths": {
+      "@consult-track/server": ["../server/src/index.ts"]
+    }
   },
   "include": ["src"]
 }

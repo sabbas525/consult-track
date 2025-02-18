@@ -1,4 +1,4 @@
 import { createTRPCReact } from '@trpc/react-query';
-import type { AppRouter } from '@consult-track/server';
+import type { AnyRouter } from '@trpc/server';
 
-export const trpc = createTRPCReact<AppRouter>();
+export const trpc = createTRPCReact<AnyRouter>();

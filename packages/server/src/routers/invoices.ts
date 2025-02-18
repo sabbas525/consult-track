@@ -32,11 +32,11 @@ export const invoiceRouter = router({
 
       return ctx.prisma.invoice.create({
         data: {
-          clientId: input.clientId,
-          userId: ctx.userId,
           amount,
           periodStart: input.periodStart,
           periodEnd: input.periodEnd,
+          client: { connect: { id: input.clientId } },
+          user: { connect: { id: ctx.userId } },
         },
       });
     }),
